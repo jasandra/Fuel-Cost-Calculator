@@ -1,8 +1,7 @@
-from tkinter import Tk, Label, Entry, Button
-from tkinter import messagebox
+from tkinter import Tk, Label, Entry, Button, messagebox
 
 
-def calculator():
+def calculator(entry_distance, entry_fuel_consumption, entry_price):
     distance = float(entry_distance.get())
     fuel_consumption = float(entry_fuel_consumption.get())
     price = float(entry_price.get())
@@ -25,8 +24,8 @@ entry_distance.focus()
 label_km = Label(master=root, text='km', font='bold', bd=5, relief='raised')
 label_km.grid(row=0, column=2, padx=10, sticky='W')
 
-label_fuel_consumption = Label(master=root, text='Fuel consumption: ', font='bold',
-                               bd=5, relief='raised')
+label_fuel_consumption = Label(master=root, text='Fuel consumption: ',
+                               font='bold', bd=5, relief='raised')
 label_fuel_consumption.grid(row=1, column=0, sticky='E', padx=10)
 entry_fuel_consumption = Entry(master=root, bd=5, bg='#FAF0E6')
 entry_fuel_consumption.grid(row=1, column=1)
@@ -44,8 +43,9 @@ entry_price.grid(row=2, column=1, pady=20, sticky='W')
 label_pln = Label(master=root, text='PLN', font='bold', bd=5, relief='raised')
 label_pln.grid(row=2, column=2, padx=10)
 
-button = Button(master=root, text='Calculate!', command=calculator, font='bold',
-                bd=10, relief='raised')
+button = Button(master=root, text='Calculate!', command=lambda: calculator(
+    entry_distance, entry_fuel_consumption, entry_price),
+                font='bold', bd=10, relief='raised')
 button.grid(row=3, column=1)
 
 root.title('Fuel Cost Calculator')
